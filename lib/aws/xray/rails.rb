@@ -7,10 +7,10 @@ module Aws
         unless Aws::Xray.config.name
           app_name = app.class.parent_name.underscore.gsub(/(\/|_)/, '-')
 
-          if Rails.env.production?
+          if ::Rails.env.production?
             Aws::Xray.config.name = app_name
           else
-            Aws::Xray.config.name = "#{app_name}-#{Rails.env}"
+            Aws::Xray.config.name = "#{app_name}-#{::Rails.env}"
           end
         end
       end
